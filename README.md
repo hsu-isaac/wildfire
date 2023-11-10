@@ -42,6 +42,9 @@ Hasina Tanweer’s OSI network model has only one layer - Physical..
 - Run service with `go run .`
 - Hit service with curl command `curl localhost:8080/` OR visit `localhost:8080/` on your browser
 
+## Time
+This solution took me roughly 3 hours to complete discounting the time taken to complete the README.
+
 ## TODO
 I believe that this solution manages to accomplish the basic requirements of the task,
 however it is not yet production ready. With more time I would like to accomplish the
