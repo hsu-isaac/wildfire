@@ -36,7 +36,7 @@ func FetchNameAndJokeHandler(c *gin.Context) {
 				errChan <- err
 				return
 			} else if err == nil {
-				name = *fullName
+				name = fullName
 				break
 			}
 		}
