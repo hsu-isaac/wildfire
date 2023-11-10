@@ -2,8 +2,8 @@ package services
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
-	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -21,16 +21,20 @@ type valueStruct struct {
 	Joke       string   `json:"joke"`
 }
 
+const FirstName = "John"
+const LastName = "Doe"
+
 /*
 getJoke (1) calls the joke API, (2) reads the response, and (3) unmarshalls it
 into the Joke struct.
 */
-func GetJoke(c *gin.Context) (string, error) {
+func GetJoke(c *gin.Context, errChan chan error) (string, error) {
 	// (1) Call the joke API
-	jokeUrl := "http://joke.loc8u.com:8888/joke?limitTo=nerdy&firstName=firstName&lastName=lastName"
-	resp, err := http.Get(jokeUrl)
+	const jokeUrl = "http://joke.loc8u.com:8888/joke?limitTo=nerdy&firstName=%s&lastName=%s"
+	url := fmt.Sprintf(jokeUrl, FirstName, LastName)
+
+	resp, err := http.Get(url)
 	if err != nil {
-		log.Println(err)
 		return "", err
 	}
 
@@ -38,7 +42,6 @@ func GetJoke(c *gin.Context) (string, error) {
 	defer resp.Body.Close()
 	responseData, err := io.ReadAll(resp.Body)
 	if err != nil {
-		log.Println(err)
 		return "", err
 	}
 
@@ -46,7 +49,6 @@ func GetJoke(c *gin.Context) (string, error) {
 	var jokeResult Joke
 	err = json.Unmarshal(responseData, &jokeResult)
 	if err != nil {
-		log.Println(err)
 		return "", err
 	}
 

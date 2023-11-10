@@ -3,7 +3,6 @@ package services
 import (
 	"encoding/json"
 	"io"
-	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -19,12 +18,11 @@ type Name struct {
 getName (1) calls the name API, (2) reads the response, and (3) unmarshalls it
 into the Name struct.
 */
-func GetName(c *gin.Context) (*Name, error) {
+func GetName(c *gin.Context, errChan chan error) (*Name, error) {
 	// (1) Call the name API
-	nameUrl := "https://names.mcquay.me/api/v0/"
+	const nameUrl = "http://joke.loc8u.com:8888/joke?limitTo=nerdy&firstName=John&lastName=Doe"
 	resp, err := http.Get(nameUrl)
 	if err != nil {
-		log.Println(err)
 		return nil, err
 	}
 
@@ -32,7 +30,6 @@ func GetName(c *gin.Context) (*Name, error) {
 	defer resp.Body.Close()
 	responseData, err := io.ReadAll(resp.Body)
 	if err != nil {
-		log.Println(err)
 		return nil, err
 	}
 
@@ -40,7 +37,6 @@ func GetName(c *gin.Context) (*Name, error) {
 	var nameResult Name
 	err = json.Unmarshal(responseData, &nameResult)
 	if err != nil {
-		log.Println(err)
 		return nil, err
 	}
 

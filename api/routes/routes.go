@@ -7,5 +7,5 @@ import (
 )
 
 func SetupRoutes(router *gin.Engine) {
-	router.GET("/", handler.CombineNameAndJoke)
+	router.GET("/", handler.FetchNameAndJokeHandler)
 }
