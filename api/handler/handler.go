@@ -89,8 +89,8 @@ func combineNameAndJoke(joke string, name services.Name) (string, error) {
 		return "", jokeError
 	}
 
-	finalJoke := strings.Replace(joke, "John", name.FirstName, 1)
-	finalJoke = strings.Replace(finalJoke, "Doe", name.LastName, 1)
+	finalJoke := strings.Replace(joke, services.FirstName, name.FirstName, 1)
+	finalJoke = strings.Replace(finalJoke, services.LastName, name.LastName, 1)
 
 	return finalJoke, nil
 }

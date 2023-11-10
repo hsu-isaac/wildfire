@@ -20,7 +20,7 @@ into the Name struct.
 */
 func GetName(c *gin.Context, errChan chan error) (*Name, error) {
 	// (1) Call the name API
-	const nameUrl = "http://joke.loc8u.com:8888/joke?limitTo=nerdy&firstName=John&lastName=Doe"
+	const nameUrl = "https://names.mcquay.me/api/v0"
 	resp, err := http.Get(nameUrl)
 	if err != nil {
 		return nil, err
