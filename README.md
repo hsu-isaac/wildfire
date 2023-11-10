@@ -33,3 +33,24 @@ $ curl "http://joke.loc8u.com:8888/joke?limitTo=nerdy&firstName=John&lastName=Do
 $ curl "http://localhost:5000"
 Hasina Tanweer’s OSI network model has only one layer - Physical..
 ```
+
+# The Solution
+## How to Run
+- Install Go if not already installed locally
+- Clone into this repository `git clone https://github.com/hsu-isaac/wildfire.git`
+- Navigate into the project `cd wildfire`
+- Run service with `go run .`
+- Hit service with curl command `curl localhost:8080/` OR visit `localhost:8080/` on your browser
+
+## TODO
+I believe that this solution manages to accomplish the basic requirements of the task,
+however it is not yet production ready. With more time I would like to accomplish the
+following:
+- Write more extensive tests for code
+  - More extensive test cases in handler_test.go
+  - Mock API responses and ensure correct handling of errors
+
+
+
+
+
