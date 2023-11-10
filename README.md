@@ -49,6 +49,10 @@ following:
 - Write more extensive tests for code
   - More extensive test cases in handler_test.go
   - Mock API responses and ensure correct handling of errors
+- Check up on error handling for the APIs and what limitations they might have
+  - Rate limiting, random errors, etc
+- Production level code would likely also involve setting up an environment so that
+  URLs and other constants don't have to be explicitly stated
 
 
 
