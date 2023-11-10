@@ -31,7 +31,7 @@ func FetchNameAndJokeHandler(c *gin.Context) {
 		defer wg.Done()
 
 		for i := 0; i < API_RETRY_COUNT; i++ {
-			fullName, err := services.GetName(c, errChan)
+			fullName, err := services.GetName(c)
 			if err != nil && i == API_RETRY_COUNT-1 {
 				errChan <- err
 				return
@@ -48,7 +48,7 @@ func FetchNameAndJokeHandler(c *gin.Context) {
 		defer wg.Done()
 
 		for i := 0; i < API_RETRY_COUNT; i++ {
-			fullJoke, err := services.GetJoke(c, errChan)
+			fullJoke, err := services.GetJoke(c)
 			if err != nil && i == API_RETRY_COUNT-1 {
 				errChan <- err
 				return

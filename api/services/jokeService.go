@@ -28,7 +28,7 @@ const LastName = "Doe"
 getJoke (1) calls the joke API, (2) reads the response, and (3) unmarshalls it
 into the Joke struct.
 */
-func GetJoke(c *gin.Context, errChan chan error) (string, error) {
+func GetJoke(c *gin.Context) (string, error) {
 	// (1) Call the joke API
 	const jokeUrl = "http://joke.loc8u.com:8888/joke?limitTo=nerdy&firstName=%s&lastName=%s"
 	url := fmt.Sprintf(jokeUrl, FirstName, LastName)
